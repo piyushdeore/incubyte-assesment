@@ -20,21 +20,23 @@ public class string_calc {
 
 	private static int sum(String[] mystr) {
 		int total = 0;
-		String negStr = "";
+ 	    String negStr = "";
 
-		for (String number : mystr) {
-			if (toInt(number) < 0) {
-				if (negStr.equals(""))
-					negStr = number;
-				else
-					negStr += ("," + number);
-			}
-
+        for(String number : mystr){
+        	if(toInt(number) < 0){
+        		if(negStr.equals(""))
+        			negStr = number;
+        		else
+        			negStr += ("," + number);
+        	}
+        	if(toInt(number) < 1000)
+		    	total += toInt(number);
 		}
 
-		if (!negStr.equals("")) {
+		if(!negStr.equals("")){
 			throw new IllegalArgumentException("Negatives not allowed: " + negStr);
 		}
+
 
 		return total;
 
@@ -46,7 +48,11 @@ public class string_calc {
 
 		System.out.println(add("1,4"));
 
+		System.out.println(add("1,4,5,8,7"));
+
 		System.out.println(add("1,2000"));
+
+		System.out.println(add("1,-5,8,9,-99"));
 
 	}
 
